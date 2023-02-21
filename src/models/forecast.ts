@@ -1,6 +1,6 @@
 export type ForecastType = {
   location: Location;
-  current: Current;
+  current: CurrentWeatherType;
   forecast: Forecast;
 };
 
@@ -86,7 +86,7 @@ type Day = {
   uv: number;
 };
 
-type Current = {
+export type CurrentWeatherType = {
   last_updated_epoch: number;
   last_updated: string;
   temp_c: number;

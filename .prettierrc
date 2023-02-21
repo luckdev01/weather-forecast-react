@@ -3,7 +3,7 @@
     "proseWrap": "always",
     "singleQuote": true,
     "bracketSpacing": true,
-    "jsxBracketSameLine": true,
+    "jsxBracketSameLine": false,
     "tabWidth": 2,
     "trailingComma": "all",
     "arrowParens": "avoid"
