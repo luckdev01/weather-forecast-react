@@ -2,7 +2,7 @@ import React from 'react';
 import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
-import Forecast from './pages/Forecast';
+import Forecast from './pages/forecast';
 import './App.css';
 
 function App() {
