@@ -1,11 +1,11 @@
 import React, { FC, useCallback, useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { CurrentWeatherType } from '../../../models/forecast';
+import { ICurrentWeather } from '../../../models/forecast';
 import { useStyles } from './CurrentWeather.styles';
 
 type Props = {
-  data: CurrentWeatherType;
+  data: ICurrentWeather;
 };
 
 const CurrentWeather: FC<Props> = ({ data }) => {

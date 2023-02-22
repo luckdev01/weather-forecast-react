@@ -6,6 +6,8 @@ import { useStyles } from './Forecast.styles';
 import { fetchForecast } from '../../services/api';
 import { ForecastType } from '../../models/forecast';
 import CurrentWeather from './current-weather';
+import WeatherForecast from './weather-forecast';
+import { formatDateTime } from '../../utils/common';
 
 const Forecast: FC = () => {
   const [forecastData, setForecastData] = useState<ForecastType | undefined>(
@@ -28,18 +30,11 @@ const Forecast: FC = () => {
             Reno, Nevada, United States
           </Typography>
           <Typography variant="subtitle1" textAlign="left">
-            {new Date().toLocaleString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: '2-digit',
-              weekday: 'short',
-              hour: '2-digit',
-              minute: '2-digit',
-              second: '2-digit',
-            })}
+            {formatDateTime()}
           </Typography>
         </Box>
         {forecastData && <CurrentWeather data={forecastData.current} />}
+        <WeatherForecast data={forecastData?.forecast.forecastday ?? []} />
       </Box>
     </Container>
   );

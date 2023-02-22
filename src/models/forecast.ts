@@ -1,14 +1,14 @@
 export type ForecastType = {
-  location: Location;
-  current: CurrentWeatherType;
-  forecast: Forecast;
+  location: ILocation;
+  current: ICurrentWeather;
+  forecast: IForecast;
 };
 
-type Forecast = {
-  forecastday: Forecastday[];
+type IForecast = {
+  forecastday: IForecastDay[];
 };
 
-type Forecastday = {
+export type IForecastDay = {
   date: string;
   date_epoch: number;
   day: Day;
@@ -86,7 +86,7 @@ type Day = {
   uv: number;
 };
 
-export type CurrentWeatherType = {
+export type ICurrentWeather = {
   last_updated_epoch: number;
   last_updated: string;
   temp_c: number;
@@ -118,7 +118,7 @@ type Condition = {
   code: number;
 };
 
-type Location = {
+type ILocation = {
   name: string;
   region: string;
   country: string;
