@@ -4,14 +4,16 @@ import { makeStyles } from '@mui/styles';
 export const useStyles = makeStyles((theme: Theme) => ({
   container: {
     display: 'flex',
-    flexDirection: 'row',
-    marginTop: theme.spacing(2),
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    width: 120,
+    borderWidth: 1,
+    borderRadius: theme.spacing(1),
+    borderColor: 'black',
+    borderStyle: 'solid',
+    padding: theme.spacing(1),
   },
-  weatherUnit: {
-    marginLeft: theme.spacing(1),
-    cursor: 'pointer',
-    '&.active': {
-      textDecoration: 'underline',
-    },
+  weatherIcon: {
+    width: 48,
   },
 }));

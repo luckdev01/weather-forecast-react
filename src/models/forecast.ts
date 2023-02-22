@@ -13,10 +13,10 @@ export type IForecastDay = {
   date_epoch: number;
   day: Day;
   astro: Astro;
-  hour: Hour[];
+  hour: IHour[];
 };
 
-type Hour = {
+export type IHour = {
   time_epoch: number;
   time: string;
   temp_c: number;

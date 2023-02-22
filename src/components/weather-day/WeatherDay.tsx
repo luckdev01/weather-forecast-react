@@ -1,6 +1,5 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import React from 'react';
 import { WiSunrise, WiSunset } from 'react-icons/wi';
 import { IForecastDay } from '../../models/forecast';
 import { getWeekday } from '../../utils/common';

@@ -4,7 +4,7 @@ import { IForecastDay } from '../../../models/forecast';
 import { useStyles } from './WeatherForecast.styles';
 import WeatherDay from '../../../components/weather-day';
 import WeatherHour from '../../../components/weather-hour';
-import { getYesterday } from '../../../utils/common';
+import { getToday } from '../../../utils/common';
 
 type Props = {
   data: IForecastDay[];
@@ -12,16 +12,22 @@ type Props = {
 
 const WeatherForecast: FC<Props> = ({ data }) => {
   const classes = useStyles();
-  const [date, setDate] = useState(getYesterday());
+  const [date, setDate] = useState(getToday());
   const foreCastDay = useMemo(
     () => data.find(item => item.date === date),
     [data, date],
   );
 
+  console.log({ data, date, foreCastDay });
+
   return (
     <Box className={classes.container}>
       {foreCastDay && <WeatherDay forecastDay={foreCastDay} />}
-      <WeatherHour />
+      <Box className={classes.hoursBox}>
+        {foreCastDay?.hour.map(data => (
+          <WeatherHour hour={data} />
+        ))}
+      </Box>
     </Box>
   );
 };

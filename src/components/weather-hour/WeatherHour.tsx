@@ -1,12 +1,33 @@
 import Box from '@mui/material/Box';
-import React from 'react';
+import Typography from '@mui/material/Typography';
+import { IHour } from '../../models/forecast';
+import { useStyles } from './WeatherHour.styles';
 
-interface Props {}
+interface Props {
+  hour: IHour;
+}
 
-const WeatherHour = (props: Props) => {
-  //   const {} = props;
+const WeatherHour = ({ hour }: Props) => {
+  const classes = useStyles();
 
-  return <Box>Weather hour</Box>;
+  return (
+    <Box className={classes.container}>
+      <Typography fontWeight="bold">{hour.time.split(' ')[1]}</Typography>
+      <Box>
+        <img
+          alt="condition-icon"
+          src={hour.condition.icon}
+          className={classes.weatherIcon}
+        />
+      </Box>
+      <Box display="flex" justifyContent="space-around">
+        <Typography>
+          {hour.temp_c}
+          <sup style={{ fontSize: 8 }}>o</sup>
+        </Typography>
+      </Box>
+    </Box>
+  );
 };
 
 export { WeatherHour };

@@ -4,7 +4,7 @@ import { makeStyles } from '@mui/styles';
 export const useStyles = makeStyles((theme: Theme) => ({
   container: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     marginTop: theme.spacing(3),
   },
   weatherUnit: {
@@ -13,5 +13,11 @@ export const useStyles = makeStyles((theme: Theme) => ({
     '&.active': {
       textDecoration: 'underline',
     },
+  },
+  hoursBox: {
+    display: 'flex',
+    width: '100%',
+    overflow: 'auto',
+    gap: theme.spacing(1),
   },
 }));
