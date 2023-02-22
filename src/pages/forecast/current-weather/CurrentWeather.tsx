@@ -1,6 +1,7 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, useCallback, useContext } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { WeatherUnitContext } from '../../../contexts/weather-unit.context';
 import { ICurrentWeather } from '../../../models/forecast';
 import { useStyles } from './CurrentWeather.styles';
 
@@ -9,7 +10,7 @@ type Props = {
 };
 
 const CurrentWeather: FC<Props> = ({ data }) => {
-  const [weatherUnit, setWeatherUnit] = useState('C');
+  const { weatherUnit, setWeatherUnit } = useContext(WeatherUnitContext);
   const classes = useStyles();
 
   const changeWeatherUnit = useCallback(

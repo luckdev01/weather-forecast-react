@@ -1,6 +1,8 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { useContext } from 'react';
 import { WiSunrise, WiSunset } from 'react-icons/wi';
+import { WeatherUnitContext } from '../../contexts/weather-unit.context';
 import { IForecastDay } from '../../models/forecast';
 import { getWeekday } from '../../utils/common';
 import { useStyles } from './WeatherDay.styles';
@@ -12,6 +14,7 @@ interface Props {
 }
 
 const WeatherDay = ({ forecastDay, active, handleDateChange }: Props) => {
+  const { weatherUnit } = useContext(WeatherUnitContext);
   const classes = useStyles();
 
   return (
@@ -29,11 +32,15 @@ const WeatherDay = ({ forecastDay, active, handleDateChange }: Props) => {
       </Box>
       <Box display="flex" justifyContent="space-around">
         <Typography>
-          {forecastDay.day.mintemp_c}
+          {weatherUnit === 'C'
+            ? forecastDay.day.mintemp_c
+            : forecastDay.day.mintemp_f}
           <sup style={{ fontSize: 8 }}>o</sup>
         </Typography>
         <Typography>
-          {forecastDay.day.maxtemp_c}
+          {weatherUnit === 'C'
+            ? forecastDay.day.maxtemp_c
+            : forecastDay.day.maxtemp_f}
           <sup style={{ fontSize: 8 }}>o</sup>
         </Typography>
       </Box>

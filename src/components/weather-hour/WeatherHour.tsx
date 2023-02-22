@@ -1,5 +1,7 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { useContext } from 'react';
+import { WeatherUnitContext } from '../../contexts/weather-unit.context';
 import { IHour } from '../../models/forecast';
 import { useStyles } from './WeatherHour.styles';
 
@@ -8,6 +10,7 @@ interface Props {
 }
 
 const WeatherHour = ({ hour }: Props) => {
+  const { weatherUnit } = useContext(WeatherUnitContext);
   const classes = useStyles();
 
   return (
@@ -21,11 +24,11 @@ const WeatherHour = ({ hour }: Props) => {
         />
       </Box>
       <Typography>
-        {hour.temp_c}
+        {weatherUnit === 'C' ? hour.temp_c : hour.temp_f}
         <sup style={{ fontSize: 8 }}>o</sup>
       </Typography>
       <Typography fontSize={12}>
-        Feels like: {hour.feelslike_c}
+        Feels like: {weatherUnit === 'C' ? hour.feelslike_c : hour.feelslike_f}
         <sup style={{ fontSize: 6 }}>o</sup>
       </Typography>
       <Typography>{hour.humidity}%</Typography>
