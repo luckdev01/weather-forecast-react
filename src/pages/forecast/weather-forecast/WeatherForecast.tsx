@@ -1,4 +1,4 @@
-import { FC, useCallback, useMemo, useState } from 'react';
+import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import Box from '@mui/material/Box';
 import { IForecastDay } from '../../../models/forecast';
 import { useStyles } from './WeatherForecast.styles';
@@ -17,6 +17,10 @@ const WeatherForecast: FC<Props> = ({ data }) => {
     () => data.find(forecastDay => forecastDay.date === activeDate),
     [data, activeDate],
   );
+
+  useEffect(() => {
+    setActiveDate(getToday());
+  }, [data]);
 
   const handleDateChange = useCallback(
     (newDate: string) => {
