@@ -68,7 +68,7 @@ const CurrentWeather: FC<Props> = ({ data }) => {
           Humidity: <b>{data.humidity}</b>%
         </Typography>
         <Typography>
-          Wind: <b>{data.wind_mph}</b> mph
+          Wind: <b>{data.wind_mph}</b> mph ({data.wind_dir})
         </Typography>
         <Typography>
           Feels like:{' '}

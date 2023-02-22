@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useState } from 'react';
+import { FC, useCallback, useMemo, useState } from 'react';
 import Box from '@mui/material/Box';
 import { IForecastDay } from '../../../models/forecast';
 import { useStyles } from './WeatherForecast.styles';
@@ -12,20 +12,37 @@ type Props = {
 
 const WeatherForecast: FC<Props> = ({ data }) => {
   const classes = useStyles();
-  const [date, setDate] = useState(getToday());
-  const foreCastDay = useMemo(
-    () => data.find(item => item.date === date),
-    [data, date],
+  const [activeDate, setActiveDate] = useState(getToday());
+  const activeForecastDay = useMemo(
+    () => data.find(forecastDay => forecastDay.date === activeDate),
+    [data, activeDate],
   );
 
-  console.log({ data, date, foreCastDay });
+  const handleDateChange = useCallback(
+    (newDate: string) => {
+      setActiveDate(newDate);
+    },
+    [setActiveDate],
+  );
 
   return (
     <Box className={classes.container}>
-      {foreCastDay && <WeatherDay forecastDay={foreCastDay} />}
-      <Box className={classes.hoursBox}>
-        {foreCastDay?.hour.map(data => (
-          <WeatherHour hour={data} />
+      <Box component="ul" className={classes.hoursBox}>
+        {data.map((forecastDay, index) => (
+          <li key={index} style={{ listStyleType: 'none' }}>
+            <WeatherDay
+              forecastDay={forecastDay}
+              active={forecastDay.date === activeDate}
+              handleDateChange={handleDateChange}
+            />
+          </li>
+        ))}
+      </Box>
+      <Box component="ul" className={classes.hoursBox}>
+        {activeForecastDay?.hour.map((data, index) => (
+          <li key={index} style={{ listStyleType: 'none' }}>
+            <WeatherHour hour={data} />
+          </li>
         ))}
       </Box>
     </Box>

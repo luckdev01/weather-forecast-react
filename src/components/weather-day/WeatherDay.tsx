@@ -7,14 +7,18 @@ import { useStyles } from './WeatherDay.styles';
 
 interface Props {
   forecastDay: IForecastDay;
-  selected?: boolean;
+  active: boolean;
+  handleDateChange: (day: string) => void;
 }
 
-const WeatherDay = ({ forecastDay, selected }: Props) => {
+const WeatherDay = ({ forecastDay, active, handleDateChange }: Props) => {
   const classes = useStyles();
 
   return (
-    <Box className={`${classes.container} ${selected ? 'active' : ''}`}>
+    <Box
+      className={`${classes.container} ${active ? 'active' : ''}`}
+      onClick={() => handleDateChange(forecastDay.date)}
+    >
       <Typography fontWeight="bold">{getWeekday(forecastDay.date)}</Typography>
       <Box>
         <img

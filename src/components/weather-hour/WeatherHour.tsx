@@ -20,12 +20,18 @@ const WeatherHour = ({ hour }: Props) => {
           className={classes.weatherIcon}
         />
       </Box>
-      <Box display="flex" justifyContent="space-around">
-        <Typography>
-          {hour.temp_c}
-          <sup style={{ fontSize: 8 }}>o</sup>
-        </Typography>
-      </Box>
+      <Typography>
+        {hour.temp_c}
+        <sup style={{ fontSize: 8 }}>o</sup>
+      </Typography>
+      <Typography fontSize={12}>
+        Feels like: {hour.feelslike_c}
+        <sup style={{ fontSize: 6 }}>o</sup>
+      </Typography>
+      <Typography>{hour.humidity}%</Typography>
+      <Typography fontSize={12}>
+        {hour.wind_mph} mph ({hour.wind_dir})
+      </Typography>
     </Box>
   );
 };

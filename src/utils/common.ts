@@ -11,6 +11,7 @@ export const formatDateTime = (date?: string) =>
 
 export const getWeekday = (date: string) =>
   new Date(date).toLocaleString('en-US', {
+    day: '2-digit',
     weekday: 'short',
   });
 
