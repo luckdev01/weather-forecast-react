@@ -23,8 +23,10 @@ const Forecast: FC = () => {
 
   useEffect(() => {
     (async () => {
-      const data = await fetchForecast(activeCity);
-      setForecastData(data);
+      const resp = await fetchForecast(activeCity);
+      if (resp.success) {
+        setForecastData(resp.data);
+      }
     })();
   }, [activeCity]);
 
